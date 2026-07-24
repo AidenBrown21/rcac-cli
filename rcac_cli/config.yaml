@@ -1,0 +1,7 @@
+# Configuration for RCAC CLI REPL and tools
+
+# This file can be extended to include tool schemas, repository mapping settings,
+# and other runtime configuration options.
+
+# Example placeholder:
+# tool_schema_path: "rcac_cli/tools/schema.json"

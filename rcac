@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Simple wrapper to invoke the RCAC CLI REPL
+python -m rcac_cli.main "$@"
