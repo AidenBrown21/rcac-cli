@@ -2,22 +2,32 @@
 
 An autonomous terminal-based AI coding assistant for RCAC Qwen.
 
+## 🔑 Getting Your RCAC API Key
+
+To get your RCAC API key:
+1. Go to [https://genai.rcac.purdue.edu/](https://genai.rcac.purdue.edu/).
+2. Click on your profile in the top-right corner.
+3. Select **Settings** → **Account** → **API keys**.
+4. Copy your API key.
+
+---
+
 ## 📦 Quick Installation
 
 You can install `rcac-cli` directly using `pip` or `pipx`:
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/rcac-cli.git
+git clone https://github.com/AidenBrown21/rcac-cli.git
 cd rcac-cli
 
-# Install locally in editable mode (or via pipx)
+# Install locally in editable mode
 pip install -e .
 ```
 
 ---
 
-## 🔑 Setup & Usage
+## 🚀 Setup & Usage
 
 ### 1. Interactive First-Run Prompt
 Simply type `rcac` in your terminal:
