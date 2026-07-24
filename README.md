@@ -14,15 +14,32 @@ To get your RCAC API key:
 
 ## 📦 Quick Installation
 
-You can install `rcac-cli` directly using `pip` or `pipx`:
+You can install `rcac-cli` using standard Python 3 setup:
 
+### Option 1: Using Virtual Environment (Recommended)
 ```bash
 # Clone the repository
 git clone https://github.com/AidenBrown21/rcac-cli.git
 cd rcac-cli
 
-# Install locally in editable mode
+# Create & activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install in editable mode
 pip install -e .
+```
+
+### Option 2: Using pipx
+```bash
+pipx install -e .
+```
+
+### Option 3: Running directly without installation
+```bash
+python3 -m rcac_cli.main
+# or
+./rcac
 ```
 
 ---

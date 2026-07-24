@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 # Simple wrapper to invoke the RCAC CLI REPL
-python -m rcac_cli.main "$@"
+if command -v python3 &>/dev/null; then
+    exec python3 -m rcac_cli.main "$@"
+else
+    exec python -m rcac_cli.main "$@"
+fi
+
