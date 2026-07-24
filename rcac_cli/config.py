@@ -2,7 +2,12 @@ import json
 import os
 from pathlib import Path
 
-CONFIG_DIR = Path.home() / ".rcac"
+# Use temporary directory during automated tests to avoid touching user's real config
+if "PYTEST_CURRENT_TEST" in os.environ:
+    CONFIG_DIR = Path("/tmp/.rcac_test")
+else:
+    CONFIG_DIR = Path.home() / ".rcac"
+
 CONFIG_PATH = CONFIG_DIR / "config.json"
 
 DEFAULT_CONFIG = {
@@ -34,13 +39,16 @@ def save_config(cfg: dict):
 
 def set_api_key(key: str):
     cfg = load_config()
-    cfg["api_key"] = key
+    cfg["api_key"] = key.strip()
     save_config(cfg)
 
 def ensure_api_key():
-    """Prompts user for API key if missing and saves it locally."""
+    """Prompts user for API key if missing/placeholder and saves it locally."""
     cfg = load_config()
-    if not cfg.get("api_key"):
+    current_key = cfg.get("api_key", "").strip()
+    
+    # Prompt if empty or if invalid dummy key was saved (e.g. 'exit')
+    if not current_key or current_key.lower() in {'exit', 'quit', 'none', 'null'}:
         print("🔑 RCAC API Key required.")
         key = input("Please enter your RCAC API Key: ").strip()
         if key:

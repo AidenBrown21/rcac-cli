@@ -32,6 +32,10 @@ def chat(messages: List[Dict[str, str]], stream: bool = False, tools: List[Dict]
     url = cfg.get("base_url", "https://genai.rcac.purdue.edu").rstrip('/') + cfg.get("endpoint", "/api/chat/completions")
     payload = _prepare_payload(messages, stream, tools)
     response = requests.post(url, headers=_headers(), json=payload, stream=stream, timeout=60)
+    
+    if response.status_code == 401:
+        raise RuntimeError("Unauthorized (401): Your API key is invalid or expired. Run 'rcac set-key <your-api-key>' to set a valid key.")
+        
     response.raise_for_status()
     if stream:
         # iterate over SSE stream
